@@ -2,15 +2,21 @@
 
 (function(window, _) {
   window.riven = window.riven || {
-    numz: {/* other code */},
-    phyz: {
+    numz: {
       getDistance(pointA, pointB) {
         const
           distanceX = pointB.x - pointA.x,
           distanceY = pointB.y - pointA.y,
           distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
         return distance;
-      },
+    },
+        degreesToRadians(degrees) {
+          return degrees * Math.PI / 180;  
+        },
+        radiansToDegrees(radians) {
+          return radians * 180 / Math.PI;  
+        },
+    phyz: {
       /**
        * Returns an Object with basic properties utilized in a 
        * 2D physics system. On top of simple physical properties,
@@ -40,7 +46,7 @@
         integrity = 1,
         density = 1,
         volatility = 0
-      } = {}) {
+        } = {}) {
         if (type === undefined) throw new Error('You must provide a valid String for the type parameter!');
         return {
           type: type,
@@ -67,6 +73,7 @@
             // template method //
           }
         };
+      },
       },
     },
   };
